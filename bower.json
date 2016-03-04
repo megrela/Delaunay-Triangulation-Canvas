@@ -1,0 +1,22 @@
+{
+  "name": "DeluneyCanvas",
+  "homepage": "https://github.com/megrela/DeluneyCanvas",
+  "authors": [
+    "megrela <g.megreli@gmail.com>"
+  ],
+  "description": "Deluney Triangulation",
+  "main": "index.html",
+  "moduleType": [],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^2.2.1",
+    "bootstrap": "^3.3.6"
+  }
+}
