@@ -25,5 +25,10 @@ var app = {
         me.graph = new Graph(me.config.VERTEX_COUNT);
         me.graph.randomizeVertices();
         me.drawing.drawGraphVertices(me.graph);
+    },
+
+    triangulate: function () {
+        var me = this;
+        me.graph.triangulate(DelaunayTriangulation);
     }
 };

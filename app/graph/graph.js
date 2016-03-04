@@ -42,4 +42,7 @@ Graph.prototype.randomizeVertices = function () {
     console.log(""+this.vertexCount + "random points generated in " + this.randomHits + " tries");
 };
 
+Graph.prototype.triangulate = function (algorithm) {
+    this.edges = (new algorithm(this.vertices)).triangulate();
+};
 

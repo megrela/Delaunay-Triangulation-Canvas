@@ -13,3 +13,11 @@ function Circle(center, radius) {
 Circle.prototype.lowerPoint = function () {
     return new Point(this.center.x, this.center.y - this.radius / 2);
 };
+
+
+/**
+ * finds if circle contains a point
+ */
+Circle.prototype.containsPoint = function (p) {
+    return sqr(p.x - this.center.x) + sqr(p.y - this.center.y) < sqr(this.radius);
+};

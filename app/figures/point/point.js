@@ -5,6 +5,7 @@
 function Point(x, y) {
     this.x = x;
     this.y = y;
+    this.id = -1;
 }
 
 Point.randomPoint = function () {
