@@ -11,9 +11,9 @@ function Graph(vertexCount) {
     me.randomHits = 0;
     initTable();
     function initTable() {
-        for (var i=0; i<app.config.MAX_X; i++) {
+        for (var i=0; i<=app.config.MAX_X; i++) {
             me.table.push([]);
-            for (var j=0; j<app.config.MAX_Y; j++) {
+            for (var j=0; j<=app.config.MAX_Y; j++) {
                 me.table[i].push(0);
             }
         }
@@ -40,11 +40,11 @@ Graph.prototype.randomizeVertices = function () {
         }
         this.randomHits++;
     }
-    app.appendLog(""+this.vertexCount + " random points generated in " + this.randomHits + " tries");
+    app.appendLog(""+this.vertexCount + " random points generated in " + this.randomHits + " tries", "info");
 };
 
 Graph.prototype.triangulate = function (algorithm) {
     this.edges = (new algorithm(this.vertices)).triangulate();
-    app.appendLog(""+this.edges.length + " edges created after triangulation");
+    app.appendLog(""+this.edges.length + " edges created after triangulation", "info");
 };
 

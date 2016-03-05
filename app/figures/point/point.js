@@ -10,8 +10,8 @@ function Point(x, y) {
 
 Point.randomPoint = function () {
     return new Point(
-        random(1, app.config.MAX_X - 1),
-        random(1, app.config.MAX_Y - 1)
+        random(app.config.MIN_X, app.config.MAX_X),
+        random(app.config.MIN_Y, app.config.MAX_Y)
     );
 };
 

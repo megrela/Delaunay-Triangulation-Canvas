@@ -21,14 +21,31 @@ var app = {
         me.config = {
             VERTEX_COUNT: points,
             SCALE: scale,
-            MAX_X: me.drawing.dom.width / scale,
-            MAX_Y: me.drawing.dom.height / scale
+            MIN_X: 1,
+            MIN_Y: 1,
+            MAX_X: ( me.drawing.dom.width / scale )- 1,
+            MAX_Y: ( me.drawing.dom.height / scale ) - 1
         };
+    },
+
+    isValid: function () {
+        var me = this;
+        var dx = app.config.MAX_X - app.config.MIN_X + 1;
+        var dy = app.config.MAX_Y - app.config.MIN_Y + 1;
+        var all = dx * dy;
+        return me.config.VERTEX_COUNT <= all;
     },
 
     start: function () {
         var me = this;
         me.initConfig();
+        if (!me.isValid()) {
+            me.appendLog(
+                "Indicated number of points can not be drawn, at this scale",
+                "warning"
+            );
+            return;
+        }
 
         me.graph = new Graph(me.config.VERTEX_COUNT);
         me.graph.randomizeVertices();
@@ -47,10 +64,10 @@ var app = {
         });
     },
 
-    appendLog: function (data) {
+    appendLog: function (data, level) {
         var me = this;
         $('<div/>', {
-            class: 'alert alert-info',
+            class: 'alert alert-' + level,
             role: 'alert',
             text: data
         }).appendTo(me.messages);
