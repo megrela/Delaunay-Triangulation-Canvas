@@ -4,7 +4,7 @@
   "authors": [
     "megrela <g.megreli@gmail.com>"
   ],
-  "description": "Deluney Triangulation",
+  "description": "Delaunay Triangulation",
   "main": "index.html",
   "moduleType": [],
   "license": "MIT",
