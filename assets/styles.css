@@ -1,5 +1,26 @@
-canvas {
-    border: 1px solid red;
-    margin-left: 1%;
-    margin-top: 1%;
+#main {
+    height: auto;
+    display: block;
+    padding: 10px;
 }
+
+#main canvas {
+    border: 1px #3c3c3c dotted;
+    border-radius: 5px;
+    background-color: #ddd;
+}
+
+#main #tools {
+    margin: 0 0 0 10px;
+    width: 300px;
+}
+
+#main #tools .container {
+    width: 100%;
+}
+
+#main #tools #messages {
+    margin-top: 10px;
+}
+
+

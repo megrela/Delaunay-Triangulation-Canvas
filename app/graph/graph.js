@@ -26,7 +26,8 @@ Graph.prototype.vertexExists = function (p) {
 
 Graph.prototype.addVertex = function (p) {
     this.vertices.push(p);
-    this.table[p.x][p.y] = this.vertices.length;
+    p.id = this.vertices.length;
+    this.table[p.x][p.y] = p.id;
 };
 
 Graph.prototype.randomizeVertices = function () {
@@ -39,10 +40,11 @@ Graph.prototype.randomizeVertices = function () {
         }
         this.randomHits++;
     }
-    console.log(""+this.vertexCount + "random points generated in " + this.randomHits + " tries");
+    app.appendLog(""+this.vertexCount + " random points generated in " + this.randomHits + " tries");
 };
 
 Graph.prototype.triangulate = function (algorithm) {
     this.edges = (new algorithm(this.vertices)).triangulate();
+    app.appendLog(""+this.edges.length + " edges created after triangulation");
 };
 

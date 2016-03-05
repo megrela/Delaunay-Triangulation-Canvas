@@ -2,10 +2,11 @@
  * Created by gime on 3/4/2016.
  */
 
-function Triangle(a,b,c) {
-    this.a = a;
-    this.b = b;
-    this.c = c;
+function Triangle(A,B,C) {
+    this.A = A;
+    this.B = B;
+    this.C = C;
+    this.good = true;
 }
 
 Triangle.getNormalTriangleByInnerCircle = function (circle) {
@@ -49,44 +50,25 @@ Triangle.getNormalTriangleByInnerCircle = function (circle) {
 
 /**
  * calculates circumscribin circle of triangle
- * @returns {Circle}
+ * @returns {boolean}
  */
-Triangle.prototype.circumscribingCircle = function () {
-    var a = this.a,
-        b = this.b,
-        c = this.c;
+Triangle.prototype.circumscribingCircleContainsPoint = function (p) {
 
-    var A = b.x - a.x,
-        B = b.y - a.y,
-        C = c.x - a.x,
-        D = c.y - a.y,
-        E = A * (a.x + b.x) + B * (a.y + b.y),
-        F = C * (a.x + c.x) + D * (a.y + c.y),
-        G = 2 * (A * (c.y - b.y) - B * (c.x - b.x)),
-        minx,
-        miny,
-        x,
-        y,
-        dx,
-        dy,
-        r;
+    var ab = sqr(this.A.x) + sqr(this.A.y);
+    var cd = sqr(this.B.x) + sqr(this.B.y);
+    var ef = sqr(this.C.x) + sqr(this.C.y);
 
-    if(Math.abs(G) < 0.000001) {
-        minx = Math.min(a.x, b.x, c.x);
-        miny = Math.min(a.y, b.y, c.y);
-        dx   = (Math.max(a.x, b.x, c.x) - minx) * 0.5;
-        dy   = (Math.max(a.y, b.y, c.y) - miny) * 0.5;
-        x = minx + dx;
-        y = miny + dy;
-    } else {
-        x = (D*E - B*F) / G;
-        y = (A*F - C*E) / G;
-        dx = x - a.x;
-        dy = y - a.y;
-    }
+    var ox =
+        (ab * (this.C.y - this.B.y) + cd * (this.A.y - this.C.y) + ef * (this.B.y - this.A.y)) / 
+        (this.A.x * (this.C.y - this.B.y) + this.B.x * (this.A.y - this.C.y) + this.C.x * (this.B.y - this.A.y)) / 2;
+    var oy =
+        (ab * (this.C.x - this.B.x) + cd * (this.A.x - this.C.x) + ef * (this.B.x - this.A.x)) / 
+        (this.A.y * (this.C.x - this.B.x) + this.B.y * (this.A.x - this.C.x) + this.C.y * (this.B.x - this.A.x)) / 2;
 
-    r = Math.sqrt( sqr(dx) + sqr(dy));
-    return new Circle(new Point(x, y), r);
+    var sqrR = sqr(this.A.x - ox) + sqr(this.A.y - oy);
+    var sqrDistance = sqr(p.x - ox) + sqr(p.y - oy);
+
+    return sqrDistance <= sqrR;
 };
 
 

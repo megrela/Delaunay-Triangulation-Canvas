@@ -11,7 +11,7 @@ function Circle(center, radius) {
  * lower point of circle: lower_point = { x: c.x,  y: c.y - r};
  */
 Circle.prototype.lowerPoint = function () {
-    return new Point(this.center.x, this.center.y - this.radius / 2);
+    return new Point(this.center.x, this.center.y - this.radius);
 };
 
 

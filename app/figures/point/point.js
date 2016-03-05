@@ -10,8 +10,8 @@ function Point(x, y) {
 
 Point.randomPoint = function () {
     return new Point(
-        random(0, app.config.MAX_X - 1),
-        random(0, app.config.MAX_Y - 1)
+        random(1, app.config.MAX_X - 1),
+        random(1, app.config.MAX_Y - 1)
     );
 };
 
@@ -20,4 +20,11 @@ Point.prototype.scale = function () {
         x: this.x * app.config.SCALE,
         y: this.y * app.config.SCALE
     };
+};
+
+Point.prototype.isEqual = function (point2) {
+    return (
+        (Math.abs(this.x - point2.x) < EPS) &&
+        (Math.abs(this.y - point2.y) < EPS)
+    );
 };
