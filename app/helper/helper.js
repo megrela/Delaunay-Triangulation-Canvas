@@ -18,4 +18,4 @@ function delay(time) {
     }
 }
 
-var EPS = 0.00001;
+var EPS = 0.00000001;

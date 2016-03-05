@@ -29,10 +29,10 @@ DelaunayTriangulation.prototype.superTriangle = function () {
     /**
      * make it fit
      */
-    minx -= 3;
-    maxx ++;
-    miny -= 3;
-    maxy ++;
+    minx -= app.config.MAX_X;
+    maxx += app.config.MAX_X;
+    miny -= app.config.MAX_Y;
+    maxy += app.config.MAX_Y;
 
     /**
      *  make it square: dx = dy
