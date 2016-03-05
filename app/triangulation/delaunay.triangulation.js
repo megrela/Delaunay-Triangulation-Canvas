@@ -12,7 +12,7 @@ function DelaunayTriangulation(vertices) {
 
 
 /**
- * create super trianle which covers all the verticies;
+ * create super triangle which covers all the verticies;
  */
 DelaunayTriangulation.prototype.superTriangle = function () {
     var minx = this.vertices[0].x;

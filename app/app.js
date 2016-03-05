@@ -17,6 +17,7 @@ var app = {
         var points = $('#number-of-points').val();
         me.drawing.reset();
         me.messages.text('');
+
         me.config = {
             VERTEX_COUNT: points,
             SCALE: scale,
@@ -28,15 +29,14 @@ var app = {
     start: function () {
         var me = this;
         me.initConfig();
+
         me.graph = new Graph(me.config.VERTEX_COUNT);
         me.graph.randomizeVertices();
-        me.drawing.drawGraphVertices(me.graph);
-        app.triangulate();
-    },
 
-    triangulate: function () {
-        var me = this;
+        me.drawing.drawGraphVertices(me.graph);
+
         me.graph.triangulate(DelaunayTriangulation);
+
         me.drawing.drawGraphEdges(me.graph);
     },
 
@@ -48,9 +48,7 @@ var app = {
     },
 
     appendLog: function (data) {
-        console.log(data);
         var me = this;
-
         $('<div/>', {
             class: 'alert alert-info',
             role: 'alert',
