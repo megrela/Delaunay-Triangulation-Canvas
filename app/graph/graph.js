@@ -25,8 +25,8 @@ Graph.prototype.vertexExists = function (p) {
 };
 
 Graph.prototype.addVertex = function (p) {
-    this.vertices.push(p);
     p.id = this.vertices.length;
+    this.vertices.push(p);
     this.table[p.x][p.y] = p.id;
 };
 
